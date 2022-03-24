@@ -1,3 +1,10 @@
+export type JsonRpcClientOptions = {
+    endpoint: string,
+    credentials?: RequestCredentials,
+    headers?: object,
+    debug?: boolean,
+}
+
 export class JsonRpcClient {
     endpoint: string;
     headers = {
@@ -9,19 +16,19 @@ export class JsonRpcClient {
     credentials: RequestCredentials = "omit";
     private debug = false;
 
-    constructor(endpoint: string, credentials?: RequestCredentials, headers?: object, debug?: boolean) {
-        this.endpoint = endpoint;
+    constructor(options: JsonRpcClientOptions) {
+        this.endpoint = options.endpoint;
         this.updateHeaders(this.headers);
-        if (headers) {
-            this.updateHeaders(headers);
+        if (options.headers) {
+            this.updateHeaders(options.headers);
         }
-        if (credentials) {
-            this.credentials = credentials;
+        if (options.credentials) {
+            this.credentials = options.credentials;
         }
-        if (debug) {
-            this.debug = debug;
+        if (options.debug) {
+            this.debug = options.debug;
         }
-    };
+    }
 
     updateEndpoint(endpoint: string) {
         this.endpoint = endpoint;
@@ -35,11 +42,11 @@ export class JsonRpcClient {
         for (const [name, value] of Object.entries(headers)) {
             this.headers[name] = value;
         }
-    };
+    }
 
     enableDebug() {
         this.debug = true;
-    };
+    }
 
     request(method: string, payload: object) {
         const id = this.lastId++;
@@ -62,5 +69,5 @@ export class JsonRpcClient {
                 console.error(error);
             }
         });
-    };
+    }
 }

@@ -1,20 +1,13 @@
 import { inject } from "vue";
-import {JsonRpcClient} from "./jsonrpc";
-
-export type ClientOptions = [
-    string,
-    RequestCredentials?,
-    object?,
-    boolean?,
-];
+import {JsonRpcClient, JsonRpcClientOptions} from "./jsonrpc";
 
 export function useRpcClient() {
     return inject("jsonRpcClient");
 }
 
 export default {
-    install: function(app, options: ClientOptions) {
-        const client = new JsonRpcClient(options[0], options[1], options[2], options[3]);
+    install: function(app, options: JsonRpcClientOptions) {
+        const client = new JsonRpcClient(options);
         app.provide("jsonRpcClient", client);
     }
 }

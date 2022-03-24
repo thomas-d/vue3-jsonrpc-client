@@ -7,7 +7,7 @@ export class JsonRpcClient {
     };
     lastId = 1;
     credentials: RequestCredentials = "omit";
-    debug = false;
+    private debug = false;
 
     constructor(endpoint: string, credentials?: RequestCredentials, headers?: object, debug?: boolean) {
         this.endpoint = endpoint;
@@ -35,6 +35,10 @@ export class JsonRpcClient {
         for (const [name, value] of Object.entries(headers)) {
             this.headers[name] = value;
         }
+    };
+
+    enableDebug() {
+        this.debug = true;
     };
 
     request(method: string, payload: object) {

@@ -43,6 +43,10 @@ export class JsonRpcClient {
         }
     }
 
+    removeHeader(name:string) {
+        delete this.headers[name];
+    }
+
     enableDebug() {
         this.debug = true;
     }

@@ -7,7 +7,6 @@ export function useRpcClient() {
 
 export default {
     install: function(app, options: JsonRpcClientOptions) {
-        const client = new JsonRpcClient(options);
-        app.provide("jsonRpcClient", client);
+        app.provide("jsonRpcClient", new JsonRpcClient(options));
     }
 }

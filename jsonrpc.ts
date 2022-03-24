@@ -18,7 +18,6 @@ export class JsonRpcClient {
 
     constructor(options: JsonRpcClientOptions) {
         this.endpoint = options.endpoint;
-        this.updateHeaders(this.headers);
         if (options.headers) {
             this.updateHeaders(options.headers);
         }

@@ -1,17 +1,18 @@
 export class JsonRpcClient {
     endpoint: string;
-    headers: {
-        Accept: "application/json,text/plain",
+    headers = {
+        Accept: "application/json,text/plain,*/*",
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest",
     };
-    lastId: number;
+    lastId = 1;
     credentials: RequestCredentials = "omit";
     debug = false;
 
     constructor(endpoint: string, credentials?: RequestCredentials, headers?: object, debug?: boolean) {
         this.endpoint = endpoint;
         this.lastId = 1;
+        this.updateHeaders(this.headers);
         if (headers) {
             this.updateHeaders(headers);
         }

@@ -1,0 +1,14 @@
+{
+  "name": "vue3-jsonrpc-client",
+  "version": "0.0.1",
+  "description": "A simple json rpc client plugin for Vue 3",
+  "main": "plugin.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Dedericks",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "3.x"
+  }
+}

@@ -11,7 +11,6 @@ export class JsonRpcClient {
 
     constructor(endpoint: string, credentials?: RequestCredentials, headers?: object, debug?: boolean) {
         this.endpoint = endpoint;
-        this.lastId = 1;
         this.updateHeaders(this.headers);
         if (headers) {
             this.updateHeaders(headers);
